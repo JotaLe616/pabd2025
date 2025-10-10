@@ -4,8 +4,36 @@
 
 from conta import Conta
 from cliente import Cliente
+from funcionario.funcionario import Funcionario
+from funcionario.gerente import Gerente
+
+# Aula 10/10 - Métodos estáticos, métodos de classe
+# Herança e Reescrita de métodos
+
+f = Funcionario('Bartô Galeno', '111.222.333-44', 50000)
+print(f.get_bonificacao())
+print(f)
+g = Gerente('Reginaldo Rossi', '777.222.333-88', 250000, 1234, 10)
+print(g.get_bonificacao())
+print(g)
+
+#cliente1 = Cliente('Elvis Presley', '111.222.333-44')
+#conta1 = Conta(cliente1, 1, 123, 'elvis@gmail.com', 10000)
+#print(Conta.total_contas())
+#cliente2 = Cliente('Jonhny Cage', '222.333.444-55')
+#conta2 = Conta(cliente2, 2, 234, 'jonhny@outlook.com', 5000)
+#print(Conta.total_contas())
+
+#print(Conta.lista_contas()[0].saldo)
+#print(Conta.lista_contas()[1].saldo)
+
+#print(Conta.get_saldo_total())
+
+#print(Conta.total_contas_cm())
+
 
 # Aula 26/09 - Agregação, Composição Modificadores de Acesso
+'''
 cliente1 = Cliente('Elvis Presley', '111.222.333-44')
 conta1 = Conta(cliente1, 1, 123, 'elvis@gmail.com', 10000)
 conta1._saldo = 1
@@ -33,6 +61,7 @@ print(conta1.get_saldo()) # getter
 # com decorator
 conta1.saldo = -100
 print(conta1.saldo) # getter
+'''
 
 # Aula 19/09 - Orientação a objetos
 '''
