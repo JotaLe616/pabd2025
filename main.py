@@ -1,12 +1,21 @@
-
-
-## Programação com Acesso a Banco de Dados
+# Programação com Acesso a Banco de Dados
 # Revisão de Orientação a Objetos
 # Prof. Guilherme Leal Santos & João Gabriel dos Santos :p
 
+from empresa.config.database import SupabaseConnection
+from empresa.dao.funcionario_dao import FuncionarioDAO
+
+client = SupabaseConnection().client
+
+# Criando DAO para acessar a tabela funcionario
+funcionario_dao = FuncionarioDAO(client)
+
+for funcionario in funcionario_dao.read_all():
+    print(funcionario)
+
+
 # from conta import Conta
 # from cliente import Cliente
-# from empresa.config.database import SupabaseConnection
 # from funcionario.controle_de_bonificacoes import ControleDeBonificacoes
 # from funcionario.funcionario import Funcionario
 # from funcionario.gerente import Gerente
@@ -14,7 +23,6 @@
 # import ifrn
 # Aula 17/10 - Polimorfismo, Classes Abstratas, SupaBase
 
-# client = SupabaseConnection().client
 
 # pessoa = Pessoa('Guilherme', '111.222.333-44')
 # print(pessoa)
