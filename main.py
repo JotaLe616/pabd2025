@@ -7,6 +7,7 @@ from empresa.config.database import SupabaseConnection
 from empresa.dao.funcionario_dao import FuncionarioDAO
 from empresa.dao.departamento_dao import DepartamentoDAO
 from empresa.models.departamento import Departamento
+from funcionario.funcionario import Funcionario
 
 client = SupabaseConnection().client
 
@@ -16,17 +17,17 @@ funcionario_dao = FuncionarioDAO(client)
 # Criando DAO para acessar a tabela departamento
 departamento_dao = DepartamentoDAO(client)
 
-# Create Departamento
+# Create (Departamento)
 # novo_departamento = DepartamentoDAO(
-#     numero=103,
+#     numero=104,
 #     nome='Marketing',
-#     cpf_gerente='55566677788',
-#     data_ini=date(2023, 1, 15),
+#     cpf_gerente='99988877766',
+#     data_ini=date(2025, 12, 5),
 # )
-# departamento_criado = departamento_dao.create(novo_departamento)
-# print(departamento_criado)
+#departamento_criado = departamento_dao.create(novo_departamento)
+#print(departamento_criado)
 
-# Create Funcionario
+# Create (Funcionario)
 # novo_funcionario = Funcionario(
 #     cpf='33322211144',
 #     pnome='Ana',
@@ -41,7 +42,32 @@ departamento_dao = DepartamentoDAO(client)
 # funcionario_criado = funcionario_dao.create(novo_funcionario)
 # print(funcionario_criado)
 
+### Read All (Departamento)
+'''
+for departamento in departamento_dao.read_all():
+   print(departamento)
+'''
+
+### Read All (Funcionario)
+'''
+for funcionario in funcionario_dao.read_all():
+   print(funcionario)
+'''
+
+### Read (Departamento)
+'''
+d = departamento_dao.read('numero', '101')
+print(d)
+'''
+
+### Read (Funcionario)
+'''
+f = funcionario_dao.read('cpf', '11122233344')
+print(f)
+'''
+
 ### Update Departamento
+'''
 departamento_atualizado = Departamento(
     _numero=103,
     _nome='Marketing e Vendas',
@@ -50,48 +76,37 @@ departamento_atualizado = Departamento(
 )
 departamento_result = departamento_dao.update('numero', 103, departamento_atualizado)
 print(departamento_result)
+'''
 
 ### Update Funcionario
-# funcionario_atualizado = Funcionario(
-#     cpf='33322211144',
+'''
+funcionario_atualizado = Funcionario(
+    cpf='33322211144',
+     pnome='Ana Maria',
+     unome='Silva',
+     data_nasc=date(1990, 5, 20),
+     endereco='Rua B, 456',
+     salario=4800.00,
+     sexo='F',
+     cpf_supervisor='11122233344',
+     numero_departamento=103,
+ )
+funcionario_result = funcionario_dao.update('cpf', '33322211144', funcionario_atualizado)
+print(funcionario_result)
+'''
 
-#     pnome='Ana Maria',
-#     unome='Silva',
-#     data_nasc=date(1990, 5, 20),
-#     endereco='Rua B, 456',
-#     salario=4800.00,
-#     sexo='F',
-#     cpf_supervisor='11122233344',
-#     numero_departamento=103,
-# )
-# funcionario_result = funcionario_dao.update('cpf', '33322211144', funcionario_atualizado)
-# print(funcionario_result)
+### Delete (Departamento)
+'''
+departamento_deletado = departamento_dao.delete('numero', 103)
+print(departamento_deletado)
+'''
 
-### Delete Departamento
-# departamento_deletado = departamento_dao.delete('numero', 103)
-# print(departamento_deletado)
+### Delete (Funcionario)
+'''
+funcionario_deletado = funcionario_dao.delete('cpf', '33322211144')
+print(funcionario_deletado)
+'''
 
-### Delete Funcionario
-# funcionario_deletado = funcionario_dao.delete('cpf', '33322211144')
-# print(funcionario_deletado)
-
-### Read All (Departamento)
-# for departamento in departamento_dao.read_all():
-#   print(departamento)
-
-### Read All (Funcionario)
-# for funcionario in funcionario_dao.read_all():
-#   print(funcionario)
-
-### Read (Departamento)
-# d = departamento_dao.read('numero', '101')
-# print(d)
-
-### Read (Funcionario)
-# f = funcionario_dao.read('cpf', '11122233344')
-# print(f)
-
-# Update
 
 
 # from conta import Conta

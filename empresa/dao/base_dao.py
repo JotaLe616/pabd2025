@@ -73,8 +73,7 @@ class BaseDAO(ABC, Generic[T]):
     ### Delete
     def delete(self, pk: str, value: T) -> Optional[T]:
         try:
-            data = self.to_dict(pk, value)
-            response = self._client.table(self._table_name).delete(data).execute()
+            response = self._client.table(self._table_name).delete().eq(pk, value).execute()
             if response.data and len(response.data) > 0:
                 return [self.to_model(response.data[0])]
             return None
