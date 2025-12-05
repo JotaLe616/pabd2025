@@ -1,8 +1,8 @@
 from supabase import Client
 from empresa.dao.base_dao import BaseDAO
-from empresa.models.funcionario import Departamento
+from empresa.models.departamento import Departamento
 
-class departamentoDAO(BaseDAO[Departamento]):
+class DepartamentoDAO(BaseDAO[Departamento]):
 
     def __init__(self, client: Client):
         super().__init__(client, 'departamento')
